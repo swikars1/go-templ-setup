@@ -1,0 +1,26 @@
+package user
+
+import "github.com/swikars1/got/view/layout"
+import "github.com/swikars1/got/view/component"
+
+import "github.com/swikars1/got/model"
+
+func getUser(c context.Context) string {
+	val, ok := c.Value("user").(string)
+	if !ok {
+		return ""
+	}
+	return val
+}
+
+templ Show(user model.User) {
+	<h1>{ getUser(ctx) } FROM MIDDLEWARE</h1>
+	@layout.Base() {
+		<h1>hellop from  golanf an templ with email: { user.Email }</h1>
+		@component.Input(component.InputProps{
+			Typ: "email",
+			Name: "email",
+			Placeholder: "Enter your email",
+		})
+	}
+}

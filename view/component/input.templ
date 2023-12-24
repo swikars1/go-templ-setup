@@ -1,0 +1,11 @@
+package component
+
+type InputProps struct {
+	Typ         string
+	Name        string
+	Placeholder string
+}
+
+templ Input(props InputProps) {
+	<input name={ props.Name } type={ props.Typ } placeholder={ props.Placeholder }/>
+}
